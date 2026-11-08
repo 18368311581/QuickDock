@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 RELEASE = ROOT.parent/'releases'
 INSTALL = ROOT/'安装验证'/'QuickDock'
-SETUP = RELEASE/'QuickDock-1.0.0-Windows-x64-Setup.exe'
+SETUP = RELEASE/'QuickDock-1.1.0-Windows-x64-Setup.exe'
 
 
 def main():

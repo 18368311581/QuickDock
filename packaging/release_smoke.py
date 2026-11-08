@@ -44,14 +44,15 @@ def run(namespace, report_path):
                  patch.object(QtWidgets.QSystemTrayIcon, 'show'):
                 dock = namespace['Dock'](store)
             dock.setAttribute(QtCore.Qt.WA_DontShowOnScreen, True)
-            assert dock.tabs.count() == 3
+            assert dock.tabs.count() == 4
             assert not dock.mouse_page.feature_enabled and not dock.mouse_page.active
             assert not dock.pin_page.enabled
+            assert not dock.long_capture_page.enable_switch.isChecked()
             dock.search.setText('csrk')
             app.processEvents()
             assert dock.list.currentItem().data(QtCore.Qt.UserRole)['id'] == 'demo'
             assert dock.list.currentRow() == 0
-            report['checks'].append('three pages, pinyin search and disabled auxiliary features')
+            report['checks'].append('four pages, pinyin search and disabled auxiliary features')
             with patch.object(QtGui.QDesktopServices, 'openUrl', return_value=True) as launch:
                 dock.open_entry(store.data['items'][0])
                 launch.assert_called_once()
@@ -90,7 +91,7 @@ def run(namespace, report_path):
             app.processEvents()
             first.close()
             report['checks'].append('isolated single-instance lock and activation IPC')
-            dock.mouse_page.shutdown(); dock.pin_page.shutdown()
+            dock.long_capture_page.shutdown(); dock.mouse_page.shutdown(); dock.pin_page.shutdown()
             dock.launcher_hotkey.close(); dock.tray.hide(); dock.mini.hide(); dock.hide()
             dock.data_watcher.blockSignals(True)
             dock.deleteLater(); app.processEvents()

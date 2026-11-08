@@ -10,7 +10,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 STAGE = HERE/'stage'
 DIST = HERE/'dist'
 RELEASE = ROOT/'releases'
@@ -52,7 +52,7 @@ def main():
                     shutil.copy2(source, dest)
     python_license = Path(sys.base_prefix)/'LICENSE.txt'
     if python_license.exists(): shutil.copy2(python_license, licenses/'Python-LICENSE.txt')
-    (STAGE/'THIRD_PARTY_NOTICES.txt').write_text('QuickDock 1.0.0\n\nIncludes CPython 3.12, PySide6 / Qt 6 (LGPLv3), Shiboken6 and pypinyin 0.55.0 (MIT).\nQt shared libraries are shipped as replaceable files. No Qt library modifications.\nQt sources and license information: https://code.qt.io/ and https://www.qt.io/licensing/\nPySide sources: https://code.qt.io/pyside/pyside-setup.git/\npypinyin: https://github.com/mozillazg/python-pinyin\nSee licenses/ and vendor/pypinyin-0.55.0.dist-info/ for license texts.\nPyInstaller bootloader uses its GPL license with distribution exception: https://pyinstaller.org/en/stable/license.html\n', encoding='utf-8')
+    (STAGE/'THIRD_PARTY_NOTICES.txt').write_text('QuickDock 1.1.0\n\nIncludes CPython 3.12, PySide6 / Qt 6 (LGPLv3), Shiboken6 and pypinyin 0.55.0 (MIT).\nQt shared libraries are shipped as replaceable files. No Qt library modifications.\nQt sources and license information: https://code.qt.io/ and https://www.qt.io/licensing/\nPySide sources: https://code.qt.io/pyside/pyside-setup.git/\npypinyin: https://github.com/mozillazg/python-pinyin\nSee licenses/ and vendor/pypinyin-0.55.0.dist-info/ for license texts.\nPyInstaller bootloader uses its GPL license with distribution exception: https://pyinstaller.org/en/stable/license.html\n', encoding='utf-8')
     build_env = os.environ.copy()
     # Other tools (such as Poppler) can expose incompatible DLLs on PATH.
     build_env['PATH'] = os.pathsep.join([str(Path(sys.base_prefix)), str(Path(sys.base_prefix)/'DLLs'), str(Path(os.environ['WINDIR'])/'System32'), os.environ['WINDIR']])
