@@ -1,0 +1,35 @@
+# User data and local runtime state
+/shortcuts.json*
+/icons/
+/doc/
+/files/
+/settings/
+/prepare/
+/ready/
+/lock/
+/*_config_content.json
+/config_info.json
+/*.lnk
+
+# Existing backups, releases, and working materials
+/backups/
+/releases/
+/work/
+/*.zip
+
+# Python and packaging outputs
+__pycache__/
+*.py[cod]
+/packaging/.venv/
+/packaging/build/
+/packaging/dist/
+/packaging/stage/
+/packaging/tools/
+/packaging/安装验证/
+/packaging/*.log
+/packaging/smoke-*.json
+/packaging/smoke-*.png
+/vendor/bin/
+
+# Runtime single-instance lock
+/.instance.lock
